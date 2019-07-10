@@ -1,0 +1,32 @@
+<!-- main app container -->
+<div class="jumbotron">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-6 offset-md-3">
+              <h3>Add New Flight</h3>
+              <form [formGroup]="flightsFrom" (ngSubmit)="onSubmit()">
+                  <div class="form-group">
+                      <label>Flight Number</label>
+                      <input type="text" formControlName="flightNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.flightNumber.errors }" />
+                      <div *ngIf="submitted && f.flightNumber.errors" class="invalid-feedback">
+                          <div *ngIf="f.flightNumber.errors.required">Flight number is required</div>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label>Date</label>
+                      <input type="text" formControlName="flightDepartureDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.flightDepartureDate.errors }" />
+                      <div *ngIf="submitted && f.flightDepartureDate.errors" class="invalid-feedback">
+                          <div *ngIf="f.flightDepartureDate.errors.required">Departure date is required</div>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <button class="btn btn-primary">Add Flight</button>
+                  </div>
+                  <div *ngIf="response">
+                    <div [ngClass]='{"error" : response.code == 1}'>{{response.message}}</div>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>

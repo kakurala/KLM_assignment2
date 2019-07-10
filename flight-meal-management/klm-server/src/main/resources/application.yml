@@ -1,0 +1,18 @@
+api: 
+  base: 
+    url: "http://localhost:8080/api"
+
+flights:
+    api:
+        addFlights: 
+            endpoint: "${api.base.url}/flight"
+        addMeals:
+            endpoint: "${api.base.url}/flight/{flightNumber}/{flightDepartureDate}/meals"
+        deleteFlight:
+            endpoint: "${api.base.url}/flight/{flightNumber}/{flightDepartureDate}"
+
+server: 
+  port: 8010
+spring: 
+  application: 
+    name: KLM_UI
