@@ -6,7 +6,7 @@ There are two individual projects in the above root directory `flight-meal-manag
 **1. light-meal-management-api** 
 API should be running on 8080 port before running `flight-meal-management`. In case if it is running on different port then same can be configured in application.yml in klm-server spring-boot module.
 
-To start API navigate to `light-meal-management-api` folder and then execute below command in separate terminal.
+To run API, navigate to `light-meal-management-api` folder and then execute below command in separate terminal.
  
 `mvn spring-boot:run`
 
