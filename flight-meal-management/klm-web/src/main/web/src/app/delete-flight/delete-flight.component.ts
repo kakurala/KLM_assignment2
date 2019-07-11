@@ -11,7 +11,8 @@ export class DeleteFlightComponent implements OnInit {
 
   public flightsFrom: FormGroup;
   public submitted = false;
-  public response = {};
+  public response: any;
+  public errResponse: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -31,6 +32,10 @@ export class DeleteFlightComponent implements OnInit {
   public deleteFlightAction() {
     this.submitted = true;
 
+    // set responses to null, otherwise the error messages will stay even after successful attempt followed by an error
+    this.errResponse = null;
+    this.response = null;
+
     // stop here if form is invalid
     if (this.flightsFrom.invalid) {
       return;
@@ -38,7 +43,10 @@ export class DeleteFlightComponent implements OnInit {
 
     this.flightsService.deleteFlight(this.flightsFrom.value).subscribe(response => {
       this.response = response;
-    });
+    },
+      err => {
+        this.errResponse = err;
+      });
   }
 
 }

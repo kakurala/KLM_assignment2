@@ -15,7 +15,7 @@
           <div class="form-group">
             <label>Date</label>
             <input type="text" formControlName="flightDepartureDate" class="form-control"
-              [ngClass]="{ 'is-invalid': submitted && f.flightDepartureDate.errors }" placeholder="ex. 2020-10-10" />
+              [ngClass]="{ 'is-invalid': submitted && f.flightDepartureDate.errors }" placeholder="ex. 2020-10-15" />
             <div *ngIf="submitted && f.flightDepartureDate.errors" class="invalid-feedback">
               <div *ngIf="f.flightDepartureDate.errors.required">Departure date is required</div>
             </div>
@@ -24,6 +24,7 @@
             <button class="btn btn-primary">Add Flight</button>
           </div>
           <div *ngIf="response" [ngClass]='{"error" : response.code === 1, "success" : response.code === 4}'>{{response.message}}</div>
+          <div *ngIf="errResponse" [ngClass]='"error"'>Error Occurred, While serving your request!</div>
         </form>
       </div>
     </div>

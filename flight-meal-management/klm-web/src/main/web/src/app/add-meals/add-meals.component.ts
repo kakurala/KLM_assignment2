@@ -12,7 +12,8 @@ export class AddMealsComponent implements OnInit {
 
   public mealsForm: FormGroup;
   public submitted = false;
-  public response = {};
+  public response: any;
+  public errResponse: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -52,6 +53,10 @@ export class AddMealsComponent implements OnInit {
   public submitMealsAction() {
     this.submitted = true;
 
+    // set responses to null, otherwise the error messages will stay even after successful attempt followed by an error
+    this.errResponse = null;
+    this.response = null;
+
     // stop here if form is invalid
     if (this.mealsForm.invalid) {
       return;
@@ -59,6 +64,9 @@ export class AddMealsComponent implements OnInit {
 
     this.flightsService.addMeals(this.mealsForm.value).subscribe(resp => {
       this.response = resp;
-    });
+    },
+      err => {
+        this.errResponse = err;
+      });
   }
 }
