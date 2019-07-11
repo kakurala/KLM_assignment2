@@ -11,11 +11,12 @@ export class FlightsService {
     private http: HttpClient
   ) { }
 
+
   public addFlight(flight: object) {
     return this.http.post(`${environment.apiURL}/addflight`, flight);
   }
 
-  public addMeals(mealsObject: object){
+  public addMeals(mealsObject: object) {
 
     const body = {
       meals: [
@@ -24,14 +25,14 @@ export class FlightsService {
       ]
     };
 
-    const path = mealsObject['flightNumber'] +'/'+ mealsObject['flightDepartureDate'];
+    const path = `${mealsObject['flightNumber']}/${mealsObject['flightDepartureDate']}`;
 
     return this.http.post(`${environment.apiURL}/addmeals/${path}`, body);
   }
 
-  public deleteFlight(flight: object){
+  public deleteFlight(flight: object) {
 
-    const path = flight['flightNumber'] +'/'+ flight['flightDepartureDate'];
+    const path = `${flight['flightNumber']}/${flight['flightDepartureDate']}`;
 
     return this.http.delete(`${environment.apiURL}/removeflight/${path}`);
   }

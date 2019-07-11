@@ -11,6 +11,7 @@ import { AddFlightComponent } from './add-flight/add-flight.component';
 import { AddMealsComponent } from './add-meals/add-meals.component';
 import { DeleteFlightComponent } from './delete-flight/delete-flight.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     AddMealsComponent,
     DeleteFlightComponent,
     LandingPageComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,

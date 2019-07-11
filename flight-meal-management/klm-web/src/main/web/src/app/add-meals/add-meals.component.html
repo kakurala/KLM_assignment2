@@ -1,109 +1,118 @@
-<!-- main app container -->
 <div class="jumbotron">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 offset-md-3">
-                <h3 class="header">Add Meals To Flight</h3>
-                <h4>Flight Details</h4>
-                <form [formGroup]="mealsForm" (ngSubmit)="onSubmit()">
-                    <div class="form-group">
-                        <label>Flight Number</label>
-                        <input type="text" formControlName="flightNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.flightNumber.errors }" />
-                        <div *ngIf="submitted && f.flightNumber.errors" class="invalid-feedback">
-                            <div *ngIf="f.flightNumber.errors.required">Flight number is required</div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Date</label>
-                        <input type="text" formControlName="flightDepartureDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.flightDepartureDate.errors }" />
-                        <div *ngIf="submitted && f.flightDepartureDate.errors" class="invalid-feedback">
-                            <div *ngIf="f.flightDepartureDate.errors.required">Departure date is required</div>
-                        </div>
-                    </div>
-                    <div formGroupName="businessMeal">
-                      <h4>Meals Details</h4>
-                    <div class="form-group">
-                        <label>Business Class Meals</label>
-                        <input type="text" [readonly]="true" formControlName="mealClass" class="form-control" [ngClass]="{ 'is-invalid': submitted && b.mealClass.errors }" />
-                        <div *ngIf="submitted && b.mealClass.errors" class="invalid-feedback">
-                            <div *ngIf="b.mealClass.errors.required">Meal class is required</div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Breakfast</label>
-                        <input type="text" formControlName="breakfast" class="form-control" [ngClass]="{ 'is-invalid': submitted && b.breakfast.errors }" />
-                        <div *ngIf="submitted && b.breakfast.errors" class="invalid-feedback">
-                            <div *ngIf="b.breakfast.errors.required">Breakfast is required</div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>lightSnack</label>
-                        <input type="text" formControlName="lightSnack" class="form-control" [ngClass]="{ 'is-invalid': submitted && b.lightSnack.errors }" />
-                        <div *ngIf="submitted && b.lightSnack.errors" class="invalid-feedback">
-                            <div *ngIf="b.lightSnack.errors.required">lightSnack is required</div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>lunch</label>
-                        <input type="text" formControlName="lunch" class="form-control" [ngClass]="{ 'is-invalid': submitted && b.lunch.errors }" />
-                        <div *ngIf="submitted && b.lunch.errors" class="invalid-feedback">
-                            <div *ngIf="b.lunch.errors.required">lunch is required</div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>dinner</label>
-                        <input type="text" formControlName="dinner" class="form-control" [ngClass]="{ 'is-invalid': submitted && b.dinner.errors }" />
-                        <div *ngIf="submitted && b.dinner.errors" class="invalid-feedback">
-                            <div *ngIf="b.dinner.errors.required">dinner is required</div>
-                        </div>
-                    </div>
-                  </div>
-
-                  <div formGroupName="economyMeal">
-                    <div class="form-group">
-                        <label>Economy Class Meals</label>
-                        <input type="text" [readonly]="true" formControlName="mealClass" class="form-control" [ngClass]="{ 'is-invalid': submitted && e.mealClass.errors }" />
-                        <div *ngIf="submitted && e.mealClass.errors" class="invalid-feedback">
-                            <div *ngIf="e.mealClass.errors.required">Meal class is required</div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Breakfast</label>
-                        <input type="text" formControlName="breakfast" class="form-control" [ngClass]="{ 'is-invalid': submitted && e.breakfast.errors }" />
-                        <div *ngIf="submitted && e.breakfast.errors" class="invalid-feedback">
-                            <div *ngIf="e.breakfast.errors.required">Breakfast is required</div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>lightSnack</label>
-                        <input type="text" formControlName="lightSnack" class="form-control" [ngClass]="{ 'is-invalid': submitted && e.lightSnack.errors }" />
-                        <div *ngIf="submitted && e.lightSnack.errors" class="invalid-feedback">
-                            <div *ngIf="e.lightSnack.errors.required">lightSnack is required</div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>lunch</label>
-                        <input type="text" formControlName="lunch" class="form-control" [ngClass]="{ 'is-invalid': submitted && e.lunch.errors }" />
-                        <div *ngIf="submitted && e.lunch.errors" class="invalid-feedback">
-                            <div *ngIf="e.lunch.errors.required">lunch is required</div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>dinner</label>
-                        <input type="text" formControlName="dinner" class="form-control" [ngClass]="{ 'is-invalid': submitted && e.dinner.errors }" />
-                        <div *ngIf="submitted && e.dinner.errors" class="invalid-feedback">
-                            <div *ngIf="e.dinner.errors.required">dinner is required</div>
-                        </div>
-                    </div>
-                  </div>
-                    <div class="form-group">
-                        <button class="btn btn-primary">Add Meal</button>
-                    </div>
-                    <div *ngIf="response">
-                        <div [ngClass]='{"error" : response.code == 1}'>{{response.message}}</div>
-                      </div>
-                </form>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <h3 class="header">Add Meals To Flight</h3>
+        <h4>Flight Details</h4>
+        <form [formGroup]="mealsForm" (ngSubmit)="submitMealsAction()">
+          <div class="form-group">
+            <label>Flight Number</label>
+            <input type="text" formControlName="flightNumber" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.flightNumber.errors }" />
+            <div *ngIf="submitted && f.flightNumber.errors" class="invalid-feedback">
+              <div *ngIf="f.flightNumber.errors.required">Flight number is required</div>
             </div>
-        </div>
+          </div>
+          <div class="form-group">
+            <label>Date</label>
+            <input type="text" formControlName="flightDepartureDate" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.flightDepartureDate.errors }" placeholder="ex. 2020-10-10" />
+            <div *ngIf="submitted && f.flightDepartureDate.errors" class="invalid-feedback">
+              <div *ngIf="f.flightDepartureDate.errors.required">Departure date is required</div>
+            </div>
+          </div>
+          <div formGroupName="businessMeal">
+            <h4>Meals Details</h4>
+            <div class="form-group">
+              <label>Business Class Meals</label>
+              <input type="text" [readonly]="true" formControlName="mealClass" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && b.mealClass.errors }" />
+              <div *ngIf="submitted && b.mealClass.errors" class="invalid-feedback">
+                <div *ngIf="b.mealClass.errors.required">Meal class is required</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Breakfast</label>
+              <input type="text" formControlName="breakfast" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && b.breakfast.errors }" />
+              <div *ngIf="submitted && b.breakfast.errors" class="invalid-feedback">
+                <div *ngIf="b.breakfast.errors.required">Breakfast is required</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>lightSnack</label>
+              <input type="text" formControlName="lightSnack" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && b.lightSnack.errors }" />
+              <div *ngIf="submitted && b.lightSnack.errors" class="invalid-feedback">
+                <div *ngIf="b.lightSnack.errors.required">lightSnack is required</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>lunch</label>
+              <input type="text" formControlName="lunch" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && b.lunch.errors }" />
+              <div *ngIf="submitted && b.lunch.errors" class="invalid-feedback">
+                <div *ngIf="b.lunch.errors.required">lunch is required</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>dinner</label>
+              <input type="text" formControlName="dinner" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && b.dinner.errors }" />
+              <div *ngIf="submitted && b.dinner.errors" class="invalid-feedback">
+                <div *ngIf="b.dinner.errors.required">dinner is required</div>
+              </div>
+            </div>
+          </div>
+
+          <div formGroupName="economyMeal">
+            <div class="form-group">
+              <label>Economy Class Meals</label>
+              <input type="text" [readonly]="true" formControlName="mealClass" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && e.mealClass.errors }" />
+              <div *ngIf="submitted && e.mealClass.errors" class="invalid-feedback">
+                <div *ngIf="e.mealClass.errors.required">Meal class is required</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Breakfast</label>
+              <input type="text" formControlName="breakfast" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && e.breakfast.errors }" />
+              <div *ngIf="submitted && e.breakfast.errors" class="invalid-feedback">
+                <div *ngIf="e.breakfast.errors.required">Breakfast is required</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>lightSnack</label>
+              <input type="text" formControlName="lightSnack" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && e.lightSnack.errors }" />
+              <div *ngIf="submitted && e.lightSnack.errors" class="invalid-feedback">
+                <div *ngIf="e.lightSnack.errors.required">lightSnack is required</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>lunch</label>
+              <input type="text" formControlName="lunch" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && e.lunch.errors }" />
+              <div *ngIf="submitted && e.lunch.errors" class="invalid-feedback">
+                <div *ngIf="e.lunch.errors.required">lunch is required</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>dinner</label>
+              <input type="text" formControlName="dinner" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && e.dinner.errors }" />
+              <div *ngIf="submitted && e.dinner.errors" class="invalid-feedback">
+                <div *ngIf="e.dinner.errors.required">dinner is required</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary">Add Meal</button>
+          </div>
+          <div *ngIf="response" [ngClass]='{"error" : response.code === 1, "success" : response.code === 4}'>{{response.message}}</div>
+        </form>
+      </div>
     </div>
+  </div>
 </div>

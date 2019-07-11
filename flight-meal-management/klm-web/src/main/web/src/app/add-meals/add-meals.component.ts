@@ -10,14 +10,14 @@ import { FlightsService } from '../service/flights.service';
 })
 export class AddMealsComponent implements OnInit {
 
-  mealsForm: FormGroup;
-  submitted = false;
-  response = {};
+  public mealsForm: FormGroup;
+  public submitted = false;
+  public response = {};
 
   constructor(
     private formBuilder: FormBuilder,
     private flightsService: FlightsService
-    ) { }
+  ) { }
 
   ngOnInit() {
 
@@ -39,28 +39,26 @@ export class AddMealsComponent implements OnInit {
         dinner: [0, Validators.required]
       })
     });
-
-// console.log(this.mealsForm.controls.businessMeal.controls);
   }
 
   // convenience getter for easy access to form fields
-  get f() { return this.mealsForm.controls; }
+  public get f() { return this.mealsForm.controls; }
 
-  get b() { return this.mealsForm.controls.businessMeal['controls']; }
+  public get b() { return this.mealsForm.controls.businessMeal['controls']; }
 
-  get e() { return this.mealsForm.controls.economyMeal['controls']; }
+  public get e() { return this.mealsForm.controls.economyMeal['controls']; }
 
 
-  onSubmit() {
-      this.submitted = true;
+  public submitMealsAction() {
+    this.submitted = true;
 
-      // stop here if form is invalid
-      if (this.mealsForm.invalid) {
-          return;
-      }
+    // stop here if form is invalid
+    if (this.mealsForm.invalid) {
+      return;
+    }
 
-      this.flightsService.addMeals(this.mealsForm.value).subscribe(resp => {
-        this.response = resp;
-      });
+    this.flightsService.addMeals(this.mealsForm.value).subscribe(resp => {
+      this.response = resp;
+    });
   }
 }

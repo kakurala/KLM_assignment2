@@ -9,36 +9,36 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class DeleteFlightComponent implements OnInit {
 
-  flightsFrom: FormGroup;
-  submitted = false;
-  response = {};
+  public flightsFrom: FormGroup;
+  public submitted = false;
+  public response = {};
 
   constructor(
     private formBuilder: FormBuilder,
     private flightsService: FlightsService
-    ) { }
+  ) { }
 
   ngOnInit() {
-      this.flightsFrom = this.formBuilder.group({
-        flightNumber: ['', Validators.required],
-        flightDepartureDate: ['', Validators.required]
-      });
+    this.flightsFrom = this.formBuilder.group({
+      flightNumber: ['', Validators.required],
+      flightDepartureDate: ['', Validators.required]
+    });
   }
 
   // convenience getter for easy access to form fields
-  get f() { return this.flightsFrom.controls; }
+  public get f() { return this.flightsFrom.controls; }
 
-  onSubmit() {
-      this.submitted = true;
+  public deleteFlightAction() {
+    this.submitted = true;
 
-      // stop here if form is invalid
-      if (this.flightsFrom.invalid) {
-          return;
-      }
+    // stop here if form is invalid
+    if (this.flightsFrom.invalid) {
+      return;
+    }
 
-      this.flightsService.deleteFlight(this.flightsFrom.value).subscribe(response => {
-        this.response = response;
-      });
+    this.flightsService.deleteFlight(this.flightsFrom.value).subscribe(response => {
+      this.response = response;
+    });
   }
 
 }
