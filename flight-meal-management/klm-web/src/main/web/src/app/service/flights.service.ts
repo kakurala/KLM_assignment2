@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { LoadingService } from './loading.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
@@ -9,8 +8,7 @@ import { environment } from 'src/environments/environment';
 export class FlightsService {
 
   constructor(
-    private http: HttpClient,
-    private loadingService: LoadingService
+    private http: HttpClient
   ) { }
 
   public addFlight(flight: object) {

@@ -36,10 +36,7 @@ export class DeleteFlightComponent implements OnInit {
           return;
       }
 
-      console.log('SUCCESS!! :-)\n\n' + JSON.stringify(this.flightsFrom.value));
-
       this.flightsService.deleteFlight(this.flightsFrom.value).subscribe(response => {
-        console.log(response);
         this.response = response;
       });
   }

@@ -36,10 +36,7 @@ export class AddFlightComponent implements OnInit {
           return;
       }
 
-      console.log('SUCCESS!! :-)\n\n' + JSON.stringify(this.flightsFrom.value));
-
       this.flightsService.addFlight(this.flightsFrom.value).subscribe(response => {
-        console.log(response);
         this.response = response;
       });
   }

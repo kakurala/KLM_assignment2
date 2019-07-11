@@ -56,13 +56,11 @@ export class AddMealsComponent implements OnInit {
 
       // stop here if form is invalid
       if (this.mealsForm.invalid) {
-        console.log('ERROR!! :-)\n\n' + JSON.stringify(this.mealsForm.value))
           return;
       }
 
       this.flightsService.addMeals(this.mealsForm.value).subscribe(resp => {
         this.response = resp;
-        console.log(resp);
       });
   }
 }
