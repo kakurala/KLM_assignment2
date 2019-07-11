@@ -26,7 +26,7 @@ import io.swagger.annotations.ApiResponses;
 
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-07-09T10:47:01.324+05:30")
 
-@Api(value = "flight", description = "the flight API")
+@Api(value = "flight")
 @RequestMapping(value = "/api")
 public interface FlightApi {
 
