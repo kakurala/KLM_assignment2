@@ -48,6 +48,17 @@ Now open the browser and hit http://localhost:8010/
 
 You should see the below page
 
+![alt text](https://github.com/kakurala/KLM_assignment2/blob/master/KLM.PNG)
+
+#### add flight
+![alt text](https://github.com/kakurala/KLM_assignment2/blob/master/klm_add.PNG)
+
+#### Add meals
+![alt text](https://github.com/kakurala/KLM_assignment2/blob/master/klm_meals.PNG)
+
+#### Delete Flight
+![alt text](https://github.com/kakurala/KLM_assignment2/blob/master/klm_delete.PNG)
+
 
 
 >Note: First time the set up might take some time, as it has to download node modules and other dependencies. 
