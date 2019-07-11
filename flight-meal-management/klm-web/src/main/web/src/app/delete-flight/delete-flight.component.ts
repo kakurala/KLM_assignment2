@@ -4,8 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-delete-flight',
-  templateUrl: './delete-flight.component.html',
-  styleUrls: ['./delete-flight.component.scss']
+  templateUrl: './delete-flight.component.html'
 })
 export class DeleteFlightComponent implements OnInit {
 

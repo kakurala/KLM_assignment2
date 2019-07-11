@@ -4,8 +4,7 @@ import { FlightsService } from '../service/flights.service';
 
 @Component({
   selector: 'app-add-flight',
-  templateUrl: './add-flight.component.html',
-  styleUrls: ['./add-flight.component.scss']
+  templateUrl: './add-flight.component.html'
 })
 export class AddFlightComponent implements OnInit {
 
