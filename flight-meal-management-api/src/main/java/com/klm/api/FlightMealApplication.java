@@ -1,4 +1,4 @@
-package io.swagger;
+package com.klm.api;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.ExitCodeGenerator;
@@ -15,7 +15,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableJpaRepositories(basePackages = {"com.klm.api"} )
 @EnableSwagger2
 @ComponentScan(basePackages = { "io.swagger", "com.klm.api" })
-public class Swagger2SpringBoot implements CommandLineRunner {
+public class FlightMealApplication implements CommandLineRunner {
 
     @Override
     public void run(String... arg0) throws Exception {
@@ -25,7 +25,7 @@ public class Swagger2SpringBoot implements CommandLineRunner {
     }
 
     public static void main(String[] args) throws Exception {
-        new SpringApplication(Swagger2SpringBoot.class).run(args);
+        new SpringApplication(FlightMealApplication.class).run(args);
     }
 
     class ExitException extends RuntimeException implements ExitCodeGenerator {

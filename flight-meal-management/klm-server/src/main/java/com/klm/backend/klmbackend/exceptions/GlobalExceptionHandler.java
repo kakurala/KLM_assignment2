@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 
+import com.klm.backend.klmbackend.model.ApiException;
 import com.klm.backend.klmbackend.model.ErrorResponse;
 
 @RestControllerAdvice
@@ -18,20 +19,24 @@ public class GlobalExceptionHandler {
 	private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
 	@ExceptionHandler(value = AirportServiceException.class)
-	public ResponseEntity<ErrorResponse> handleException(AirportServiceException exception, WebRequest request) {
+	public ResponseEntity<ApiException> handleException(AirportServiceException exception, WebRequest request) {
 		logger.info("In GlobalExceptionHandler, msg = {} ", exception.getMessage());
 
-		ErrorResponse err = new ErrorResponse(new Date(), exception.getMessage(), request.getDescription(false), exception.getCode());
+//		ApiException err = new ApiException(new Date(), exception.getMessage(), request.getDescription(false), exception.getCode());
 
-		return new ResponseEntity<ErrorResponse>(err, HttpStatus.NOT_FOUND);
+		ApiException apiError = new ApiException(HttpStatus.NOT_FOUND);
+		apiError.setMessage(exception.getMessage());
+		
+		return new ResponseEntity<ApiException>(apiError, HttpStatus.NOT_FOUND);
 	}
 	
 	@ExceptionHandler(value = Exception.class)
-	public ResponseEntity<ErrorResponse> handleGenericException(Exception exception, WebRequest request) {
+	public ResponseEntity<ApiException> handleGenericException(Exception exception, WebRequest request) {
 		logger.info("In GlobalExceptionHandler, msg = {} ", exception.getMessage());
-
-		ErrorResponse err = new ErrorResponse(new Date(), exception.getMessage(), request.getDescription(false), 0);
-
-		return new ResponseEntity<ErrorResponse>(err, HttpStatus.INTERNAL_SERVER_ERROR);
+ 
+		ApiException apiError = new ApiException(HttpStatus.INTERNAL_SERVER_ERROR);
+		apiError.setMessage(exception.getMessage());
+		
+		return new ResponseEntity<ApiException>(apiError, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 }

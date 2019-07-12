@@ -6,6 +6,8 @@ public class AirportServiceException extends RuntimeException {
 	 
 	private Integer code;
 	
+	AirportServiceException(){}
+	
 	public AirportServiceException(Integer code, String msg) {
 		super(code +" - " + msg);
 		this.code = code;

@@ -44,7 +44,7 @@ export class DeleteFlightComponent implements OnInit {
       this.response = response;
     },
       err => {
-        this.errResponse = err;
+        this.errResponse = err.error;
       });
   }
 

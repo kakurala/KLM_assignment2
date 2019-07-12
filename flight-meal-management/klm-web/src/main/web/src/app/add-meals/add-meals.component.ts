@@ -66,7 +66,7 @@ export class AddMealsComponent implements OnInit {
       this.response = resp;
     },
       err => {
-        this.errResponse = err;
+        this.errResponse = err.error;
       });
   }
 }

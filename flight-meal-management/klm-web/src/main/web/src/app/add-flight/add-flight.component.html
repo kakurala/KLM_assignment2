@@ -24,7 +24,7 @@
             <button class="btn btn-primary">Add Flight</button>
           </div>
           <div *ngIf="response" [ngClass]='{"error" : response.code === 1, "success" : response.code === 4}'>{{response.message}}</div>
-          <div *ngIf="errResponse" [ngClass]='"error"'>Error Occurred, While serving your request!</div>
+          <div *ngIf="errResponse" [ngClass]='"error"'>{{errResponse.message}}</div>
         </form>
       </div>
     </div>

@@ -5,8 +5,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
-import com.klm.backend.klmbackend.exceptions.RestTemplateErrorHandler;
-
 @Configuration
 public class AppConfig {
 
@@ -17,6 +15,7 @@ public class AppConfig {
 	 */
 	@Bean
 	public RestTemplate restTemplate(RestTemplateBuilder builder){
-		return builder.errorHandler(new RestTemplateErrorHandler()).build();
+//		return builder.errorHandler(new RestTemplateErrorHandler()).build();
+		return new RestTemplate();
 	}
 }
