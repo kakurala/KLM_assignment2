@@ -1,21 +1,22 @@
-There are two individual projects in the above root directory `flight-meal-management`.
+There are two sub projects in this project.
 
 -   flight-meal-management-api ( Spring Boot )
 -   flight-meal-management ( Spring Boot + Angular )
 
+Instructions to run each project
+---
 **1. light-meal-management-api** 
-API should be running on 8080 port before running `flight-meal-management`. In case if it is running on different port then same can be configured in application.yml in klm-server spring-boot module.
 
-To run API, navigate to `light-meal-management-api` folder and then execute below command in separate terminal.
+Open cmd(in windows), shell (in linux) and navigate to `light-meal-management-api` folder and then execute below commands.
  
+`mvn clean install`
 `mvn spring-boot:run`
 
-Once API project is started successfully then follow the below instructions to start web application.
-
 **2. flight-meal-management**
-This project contains two modules springboot and angular together.
 
->Note : If you are setting up the project for the first time then the below step in klm-web/pom.xml (line number 39 - 44) should not be commented`
+This project contains two modules springboot (backend) and angular (UI) together.
+
+>Note : If you are setting up the project for the first time then make sure the below execution step in klm-web/pom.xml should not be commented`
 ```
 <execution>
 	<id>npm install</id>
@@ -24,20 +25,22 @@ This project contains two modules springboot and angular together.
 	</goals>
 </execution>
 ```
-Execute below commands 
+Now execute below commands to run the project. 
 
+First Navigate to the project folder.
 `cd flight-meal-management`
 
+run maven as below to build angular module and Springboot modules.
 ` mvn clean install`
 
-Then move to klm-server module
-
+Now navigate to klm-server module
  `cd klm-server`
 
 Then run the project as spring boot project
  `mvn spring-boot:run`
 
-##### OR build and execute jar 
+##### OR  
+Run executable jar as below, once mvn clean install is completed. 
 `mvn clean install`
 
 `java -jar klm-server\target\klm-server-0.0.1-SNAPSHOT.jar`
@@ -47,6 +50,9 @@ Then run the project as spring boot project
 Now open the browser and hit http://localhost:8010/
 
 You should see the below page
+
+
+>Note: First time the set up might take some time, as it has to download node modules and other dependencies. 
 
 ![alt text](https://github.com/kakurala/KLM_assignment2/blob/master/KLM.PNG)
 
@@ -58,7 +64,3 @@ You should see the below page
 
 #### Delete Flight
 ![alt text](https://github.com/kakurala/KLM_assignment2/blob/master/klm_delete.PNG)
-
-
-
->Note: First time the set up might take some time, as it has to download node modules and other dependencies. 
