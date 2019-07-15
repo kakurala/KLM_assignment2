@@ -10,6 +10,7 @@ Instructions to run each project
 Open cmd(in windows), shell (in linux) and navigate to `light-meal-management-api` folder and then execute below commands.
  
 `mvn clean install`
+
 `mvn spring-boot:run`
 
 **2. flight-meal-management**
@@ -28,19 +29,24 @@ This project contains two modules springboot (backend) and angular (UI) together
 Now execute below commands to run the project. 
 
 First Navigate to the project folder.
+
 `cd flight-meal-management`
 
 run maven as below to build angular module and Springboot modules.
+
 ` mvn clean install`
 
 Now navigate to klm-server module
+
  `cd klm-server`
 
 Then run the project as spring boot project
+
  `mvn spring-boot:run`
 
 ##### OR  
 Run executable jar as below, once mvn clean install is completed. 
+
 `mvn clean install`
 
 `java -jar klm-server\target\klm-server-0.0.1-SNAPSHOT.jar`
